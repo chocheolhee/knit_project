@@ -1,12 +1,10 @@
 package com.toy.knit.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,6 +20,9 @@ public class Post {
     private String content;
     private ZonedDateTime createdAt;
     private ZonedDateTime updatedAt;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<Comment> comments;
 
     @Builder
     public Post(String title, String content, ZonedDateTime createdAt, ZonedDateTime updatedAt) {

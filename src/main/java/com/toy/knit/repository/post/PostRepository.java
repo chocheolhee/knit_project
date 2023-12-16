@@ -1,4 +1,4 @@
-package com.toy.knit.repository;
+package com.toy.knit.repository.post;
 
 import com.toy.knit.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;

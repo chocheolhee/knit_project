@@ -1,8 +1,8 @@
 package com.toy.knit.service;
 
 import com.toy.knit.entity.Post;
-import com.toy.knit.repository.PostRepository;
-import com.toy.knit.request.PostCreateAndEdit;
+import com.toy.knit.repository.post.PostRepository;
+import com.toy.knit.request.post.PostCreateAndEdit;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

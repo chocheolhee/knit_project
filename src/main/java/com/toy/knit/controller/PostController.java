@@ -1,7 +1,7 @@
 package com.toy.knit.controller;
 
 import com.toy.knit.entity.Post;
-import com.toy.knit.request.PostCreateAndEdit;
+import com.toy.knit.request.post.PostCreateAndEdit;
 import com.toy.knit.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -32,17 +32,17 @@ public class PostController {
     }
 
     @PostMapping("/api/post")
-    public Post post(@RequestBody @Valid PostCreateAndEdit request) {
+    public Post write(@RequestBody @Valid PostCreateAndEdit request) {
         return postService.createPost(request);
     }
 
     @PutMapping("/api/post/{postId}")
-    public void editPost(@PathVariable(name = "postId") Long postId, @RequestBody PostCreateAndEdit request) {
+    public void edit(@PathVariable(name = "postId") Long postId, @RequestBody PostCreateAndEdit request) {
         postService.editPost(postId, request);
     }
 
     @DeleteMapping("/api/post/{postId}")
-    public void deletePost(@PathVariable(name = "postId") Long postId) {
+    public void delete(@PathVariable(name = "postId") Long postId) {
         postService.deletePost(postId);
     }
 }
