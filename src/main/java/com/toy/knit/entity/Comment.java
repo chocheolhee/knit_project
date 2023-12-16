@@ -3,11 +3,13 @@ package com.toy.knit.entity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
 
 @Entity
+@Getter
 @Table(indexes = {@Index(name = "IDX_COMMENT_POST_ID", columnList = "post_id")})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Comment {
@@ -22,7 +24,7 @@ public class Comment {
     private ZonedDateTime createdAt;
     private ZonedDateTime updatedAt;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Post post;
 

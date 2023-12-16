@@ -6,6 +6,8 @@ import com.toy.knit.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,14 +21,12 @@ public class PostController {
 
     @GetMapping("/api/post/{postId}")
     public Post getPost(@PathVariable(name = "postId") Long postId) {
-        Post post = postService.getPost(postId);
-
-        return post;
+        return postService.getPost(postId);
     }
 
     @GetMapping("/api/posts")
-    public List<Post> getPosts() {
-        List<Post> posts = postService.findAll();
+    public Slice<Post> getPosts(Pageable page) {
+        Slice<Post> posts = postService.findAll(page);
 
         return posts;
     }

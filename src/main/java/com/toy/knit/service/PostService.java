@@ -5,6 +5,8 @@ import com.toy.knit.repository.post.PostRepository;
 import com.toy.knit.request.post.PostCreateAndEdit;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,15 +43,17 @@ public class PostService {
      * TODO 페이징
      */
     @Transactional
-    public List<Post> findAll() {
-        return postRepository.findAll();
+    public Slice<Post> findAll(Pageable page) {
+        log.info("page={}", page);
+        return postRepository.getList(page);
     }
 
     /**
      * 게시글 하나 조회
      */
     public Post getPost(Long postId) {
-        return postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않습니다."));
+        Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않습니다."));
+        return post;
     }
 
     /**
