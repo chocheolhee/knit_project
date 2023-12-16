@@ -1,12 +1,14 @@
 package com.toy.knit.controller;
 
-import com.toy.knit.domain.Post;
-import com.toy.knit.request.PostCreate;
+import com.toy.knit.entity.Post;
+import com.toy.knit.request.PostCreateAndEdit;
 import com.toy.knit.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -15,30 +17,32 @@ public class PostController {
 
     private final PostService postService;
 
-    @GetMapping("/api/posts")
-    public String getPosts() {
-        return "postsController";
-    }
-
     @GetMapping("/api/post/{postId}")
-    public Post getPost(@PathVariable Long postId) {
+    public Post getPost(@PathVariable(name = "postId") Long postId) {
         Post post = postService.getPost(postId);
 
         return post;
     }
 
+    @GetMapping("/api/posts")
+    public List<Post> getPosts() {
+        List<Post> posts = postService.findAll();
+
+        return posts;
+    }
+
     @PostMapping("/api/post")
-    public void post(@Valid PostCreate request) {
-        postService.postCreate(request);
+    public Post post(@RequestBody @Valid PostCreateAndEdit request) {
+        return postService.createPost(request);
     }
 
     @PutMapping("/api/post/{postId}")
-    public void editPost(@PathVariable Long postId) {
-        postService.editPost(postId);
+    public void editPost(@PathVariable(name = "postId") Long postId, @RequestBody PostCreateAndEdit request) {
+        postService.editPost(postId, request);
     }
 
     @DeleteMapping("/api/post/{postId}")
-    public void deletePost(@PathVariable Long postId) {
+    public void deletePost(@PathVariable(name = "postId") Long postId) {
         postService.deletePost(postId);
     }
 }
