@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import store from "@/scripts/store";
 
 const app = createApp(App)
+app.provide("$store", store);
 app.use(store)
 app.use(router)
 app.use(ElementPlus)
