@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import {RouterLink, RouterView} from 'vue-router'
+import {RouterView} from 'vue-router'
+import VueHeader from "@/components/VueHeader.vue";
 </script>
 
 <template>
-  <header>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/write">게시글 작성</RouterLink>
-    </nav>
-  </header>
-
+  <VueHeader/>
   <RouterView/>
 </template>
 
