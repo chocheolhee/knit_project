@@ -1,13 +1,10 @@
 package com.toy.knit.controller;
 
-import com.toy.knit.entity.Comment;
 import com.toy.knit.request.comment.CommentCreateAndEdit;
 import com.toy.knit.service.CommentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j

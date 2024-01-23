@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {RouterLink, RouterView} from 'vue-router'
-import WriteView from "@/views/WriteView.vue";
 </script>
 
 <template>

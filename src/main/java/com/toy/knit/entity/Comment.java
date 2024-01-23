@@ -25,7 +25,7 @@ public class Comment {
     private ZonedDateTime updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @JoinColumn(name = "post_id")
     private Post post;
 
     @Builder

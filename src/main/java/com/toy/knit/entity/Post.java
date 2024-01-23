@@ -19,6 +19,8 @@ public class Post {
 
     private String title;
     private String content;
+    private Integer likeCount;
+
     private ZonedDateTime createdAt;
     private ZonedDateTime updatedAt;
 

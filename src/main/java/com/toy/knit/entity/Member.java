@@ -15,10 +15,13 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 50, nullable = false, unique = true)
     private String email;
-    private String password;
-    private String name;
 
+    @Column(nullable = false)
+    private String password;
+
+    private String name;
     private ZonedDateTime createdAt;
 
     @Builder

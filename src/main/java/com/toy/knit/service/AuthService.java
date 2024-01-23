@@ -6,10 +6,10 @@ import com.toy.knit.repository.MemberRepository;
 import com.toy.knit.request.auth.Login;
 import com.toy.knit.request.auth.Signup;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.ZonedDateTime;
 import java.util.Optional;
 
 @Service
@@ -33,6 +33,7 @@ public class AuthService {
                 .email(signup.getEmail())
                 .password(encryptedPassword)
                 .name(signup.getName())
+                .createdAt(ZonedDateTime.now())
                 .build();
 
         memberRepository.save(member);
