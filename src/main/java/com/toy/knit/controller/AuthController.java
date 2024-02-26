@@ -60,6 +60,6 @@ public class AuthController {
         cookie.setMaxAge(0);
 
         response.addCookie(cookie);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

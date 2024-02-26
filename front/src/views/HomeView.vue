@@ -14,6 +14,14 @@ axios.get("/api/posts").then((response) => {
 
 <template>
 
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="height: 300px">
+        <img src="https://picsum.photos/1024/480/?image=12" class="d-block w-100" alt="...">
+      </div>
+    </div>
+  </div>
+
   <div class="card" style="width: 18rem;">
     <div class="card-header">
       Main List Page
