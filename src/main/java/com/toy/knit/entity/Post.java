@@ -28,6 +28,10 @@ public class Post {
     @JsonIgnoreProperties({"post"})
     private List<Comment> comments;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id")
+    private Image image;
+
     @Builder
     public Post(String title, String content, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
         this.title = title;

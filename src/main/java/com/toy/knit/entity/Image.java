@@ -22,8 +22,7 @@ public class Image {
     private ZonedDateTime createdAt;
     private ZonedDateTime updatedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id")
+    @OneToOne(mappedBy = "image", fetch = FetchType.LAZY)
     private Post post;
 
     @Builder
